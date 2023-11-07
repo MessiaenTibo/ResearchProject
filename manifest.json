@@ -1,0 +1,11 @@
+{
+    "name": "ResearchProject",
+    "version": "1.0.0",
+    "description": "This is an test extension for my ResearchProject",
+    "manifest_version": 3,
+    "author": "Tibo Messiaen",
+    "action": {
+        "default_popup": "index.html",
+        "default_title": "ResearchProject"
+    }
+}
