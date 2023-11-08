@@ -4,6 +4,10 @@
     "version": "1.0",
     "description": "An extension to scroll the active tab using Page Up and Page Down buttons.",
     "permissions": ["storage", "declarativeContent", "activeTab", "scripting"],
+    "icons": {
+      "16": "img/icon16.png",
+      "48": "img/icon48.png"
+    },    
     "action": {
       "default_popup": "popup.html"
     },
