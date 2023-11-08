@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Eye Tracking Test</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        overflow: auto;
+        background-color: whitesmoke;
+      }
+
+      .long-text {
+        padding-top: 100vh;
+        padding-bottom: 2rem;
+        max-width: 50%;
+        margin: auto;
+        text-align: center;
+        font-size: 2rem;
+        font-size: 1.5rem;
+        color: black;
+      }
+
+      .dot {
+        width: 2rem;
+        height: 2rem;
+        border-radius: 50%;
+        position: absolute;
+        animation-timing-function: linear;
+      }
+
+      .dot-red {
+        background-color: red;
+      }
+
+      .dot-blue {
+        background-color: blue;
+        left: 2.5rem;
+        top: 2.5rem;
+      }
+
+      .targetboard-area {
+        height: 20rem;
+        padding-bottom: 2rem;
+      }
+
+      .targetboard {
+        width: fit-content;
+        height: fit-content;
+        border-radius: 50%;
+        border: 1px solid black;
+        position: relative;
+        margin: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .targetboard-layer {
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid black;
+      }
+
+      .targetboard-layer-1 {
+        height: 0.5rem;
+        width: 0.5rem;
+        background: black;
+      }
+
+      .targetboard-layer-2 {
+        height: 2rem;
+        width: 2rem;
+        background: yellow;
+      }
+
+      .targetboard-layer-3 {
+        height: 4rem;
+        width: 4rem;
+        background: yellow;
+      }
+
+      .targetboard-layer-4 {
+        height: 6rem;
+        width: 6rem;
+        background: rgb(201, 43, 43);
+      }
+
+      .targetboard-layer-5 {
+        height: 8rem;
+        width: 8rem;
+        background: rgb(201, 43, 43);
+      }
+
+      .targetboard-layer-6 {
+        height: 10rem;
+        width: 10rem;
+        background: rgb(45, 125, 245);
+      }
+
+      .targetboard-layer-7 {
+        height: 12rem;
+        width: 12rem;
+        background: rgb(45, 125, 245);
+        border: 1px solid white;
+      }
+
+      .targetboard-layer-8 {
+        height: 14rem;
+        width: 14rem;
+        background: rgb(1, 22, 7);
+      }
+
+      .targetboard-layer-9 {
+        height: 16rem;
+        width: 16rem;
+        background: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="dot-red" class="dot dot-red"></div>
+    <div id="dot-blue" class="dot dot-blue"></div>
+
+    <div class="long-text">
+      Eye tracking is a fascinating technology and scientific field that has
+      significantly evolved over the years. It encompasses the study of how the
+      human eye moves and focuses on visual stimuli. By tracking eye movements,
+      researchers and technology developers gain insights into human behavior,
+      cognitive processes, and visual perception. This technology has found
+      applications in a wide range of fields, from psychology and marketing to
+      user experience design and medical diagnostics. Eye tracking technology
+      typically involves the use of specialized hardware and software to monitor
+      and record a person's eye movements. This hardware can be as simple as a
+      webcam or as advanced as dedicated eye-tracking devices. The data
+      collected from eye tracking experiments provides valuable information
+      about where a person is looking, how long they are focusing on specific
+      elements, and the patterns of eye movements. One of the fundamental
+      principles of eye tracking is the concept of gaze fixation. Gaze fixation
+      occurs when a person's eyes focus on a specific point for a brief moment.
+      By tracking these fixations and the saccades (rapid eye movements between
+      fixations), researchers can gain insights into what captures a person's
+      attention. This information is crucial in fields like advertising and web
+      design, where understanding user attention and behavior can lead to more
+      effective designs and content placement. Eye tracking has made significant
+      contributions to psychology. It has been used to investigate cognitive
+      processes, including reading patterns, decision-making, and
+      problem-solving. For example, researchers can use eye tracking to study
+      how people read text, revealing details about reading speed, the number of
+      fixations, and the locations of fixations. Such studies have advanced our
+      understanding of language processing and reading comprehension. In the
+      world of marketing, eye tracking has become a powerful tool for assessing
+      the effectiveness of advertisements and packaging design. By analyzing
+      where viewers' gaze fixates, advertisers can fine-tune their strategies to
+      maximize the impact of their messages and product displays. Eye tracking
+      also aids in optimizing user interfaces, enhancing website layouts, and
+      improving product design for better user experiences. Medical
+      professionals have harnessed eye tracking technology to diagnose and treat
+      various conditions. For instance, it is used to detect early signs of eye
+      diseases like glaucoma or assess the progress of neurological disorders
+      such as Alzheimer's disease. It can also be a valuable tool in
+      rehabilitation, assisting patients with mobility impairments by allowing
+      them to control computer interfaces or wheelchairs through eye movements.
+      In education, eye tracking research has contributed to understanding how
+      students process information, and this knowledge is being applied to
+      improve teaching methods and educational materials. By studying where
+      students look while reading textbooks or taking tests, educators can adapt
+      their teaching strategies to better align with students' cognitive
+      processes. Eye tracking also plays a critical role in usability testing
+      for software and product development. It helps identify areas of
+      frustration or confusion in user interfaces, allowing designers to make
+      informed improvements and create more user-friendly products. For example,
+      it's widely used in the gaming industry to optimize gameplay and improve
+      player experiences. Furthermore, eye tracking is invaluable in the
+      automotive industry, where it's employed to enhance driver safety and the
+      development of autonomous vehicles. By tracking drivers' eye movements,
+      car manufacturers can detect signs of drowsiness or distraction, allowing
+      for timely interventions or adaptations of autonomous driving systems. In
+      summary, eye tracking technology has made remarkable contributions to
+      numerous fields, providing valuable insights into human behavior,
+      cognitive processes, and visual perception. As the technology continues to
+      advance, we can anticipate even more applications and innovations that
+      will shape our understanding of how we see and interact with the world
+      around us.
+    </div>
+
+    <div class="targetboard-area">
+      <div class="targetboard">
+        <div class="targetboard-layer-9 targetboard-layer">
+          <div class="targetboard-layer-8 targetboard-layer">
+            <div class="targetboard-layer-7 targetboard-layer">
+              <div class="targetboard-layer-6 targetboard-layer">
+                <div class="targetboard-layer-5 targetboard-layer">
+                  <div class="targetboard-layer-4 targetboard-layer">
+                    <div class="targetboard-layer-3 targetboard-layer">
+                      <div class="targetboard-layer-2 targetboard-layer">
+                        <div
+                          class="targetboard-layer-1 targetboard-layer"
+                        ></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const dotRed = document.getElementById('dot-red');
+      const dotBlue = document.getElementById('dot-blue');
+      const blueDotSpeedSlider = document.getElementById('blueDotSpeedSlider');
+      const screenWidth = window.innerWidth;
+      const screenHeight = window.innerHeight;
+      let dotBluePosition = 20;
+      let dotBlueDirection = 'down';
+      let dotSpeed = 5;
+
+      // Function to move the dot randomly within the right side of the screen the screen
+      function moveDotRed() {
+        const randomX = Math.floor(
+          Math.random() * (screenWidth / 2) + screenWidth / 2
+        );
+        const randomY = Math.floor(Math.random() * screenHeight - 20);
+        dotRed.style.left = randomX + 'px';
+        dotRed.style.top = randomY + 'px';
+      }
+
+      // Function to move the blue dot up and down
+      function moveDotBlue() {
+        if (dotBlueDirection === 'down') {
+          dotBluePosition += dotSpeed;
+          if (dotBluePosition >= screenHeight - 20) {
+            dotBlueDirection = 'up';
+          }
+        } else if (dotBlueDirection === 'up') {
+          dotBluePosition -= dotSpeed;
+          if (dotBluePosition <= 20) {
+            dotBlueDirection = 'down';
+          }
+        }
+
+        dotBlue.style.top = dotBluePosition + 'px';
+      }
+
+      // Function to start moving the dot periodically
+      function startMovingDots() {
+        //Red
+        moveDotRed();
+        setInterval(moveDotRed, 1500); // Change the interval as needed
+        //Blue
+        moveDotBlue();
+        setInterval(moveDotBlue, 20); // Change the interval as needed
+      }
+
+      // Start the dot movement when the page loads
+      window.addEventListener('load', startMovingDots);
+    </script>
+  </body>
+</html>
