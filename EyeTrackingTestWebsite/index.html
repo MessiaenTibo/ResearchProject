@@ -12,6 +12,16 @@
         background-color: whitesmoke;
       }
 
+      h1 {
+        font-size: 3rem;
+        text-align: center;
+      }
+
+      h2 {
+        font-size: 2.5rem;
+        text-align: center;
+      }
+
       .long-text {
         padding-top: 100vh;
         padding-bottom: 2rem;
@@ -41,9 +51,43 @@
         top: 2.5rem;
       }
 
-      .targetboard-area {
+      .score-area {
+        height: 16rem;
+        width: 5rem;
+        text-align: right;
+        padding: 0.5rem;
+        border: 1px solid black;
+        overflow-y: scroll;
+      }
+
+      /* .targetboard-area {
         height: 20rem;
-        padding-bottom: 2rem;
+      } */
+
+      .clear-btn {
+        padding: 0.4rem 1rem;
+        border: 1px solid black;
+        border-radius: 0.25rem;
+        background-color: white;
+        cursor: pointer;
+      }
+
+      .targetAndButton-area {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .targetAndScore-area {
+        display: flex;
+        /* flex-direction: column; */
+        justify-items: center;
+        align-items: center;
+        justify-content: center;
+        padding-bottom: 8rem;
+        gap: 2rem;
       }
 
       .targetboard {
@@ -119,13 +163,23 @@
         width: 16rem;
         background: white;
       }
+
+      .target-spot {
+        width: 0.5rem;
+        height: 0.5rem;
+        border-radius: 50%;
+        background-color: limegreen;
+      }
     </style>
   </head>
   <body>
+    <h1>Eye Tracking tester</h1>
+    <h2>1. Tracking movement</h2>
     <div id="dot-red" class="dot dot-red"></div>
     <div id="dot-blue" class="dot dot-blue"></div>
 
     <div class="long-text">
+      <h2>2. Scrolling</h2>
       Eye tracking is a fascinating technology and scientific field that has
       significantly evolved over the years. It encompasses the study of how the
       human eye moves and focuses on visual stimuli. By tracking eye movements,
@@ -187,19 +241,38 @@
       around us.
     </div>
 
-    <div class="targetboard-area">
-      <div class="targetboard">
-        <div class="targetboard-layer-9 targetboard-layer">
-          <div class="targetboard-layer-8 targetboard-layer">
-            <div class="targetboard-layer-7 targetboard-layer">
-              <div class="targetboard-layer-6 targetboard-layer">
-                <div class="targetboard-layer-5 targetboard-layer">
-                  <div class="targetboard-layer-4 targetboard-layer">
-                    <div class="targetboard-layer-3 targetboard-layer">
-                      <div class="targetboard-layer-2 targetboard-layer">
+    <h2>3. Aim/Accuracy</h2>
+    <div class="targetAndScore-area">
+      <div class="targetAndButton-area">
+        <button class="clear-btn">Clear field</button>
+        <div class="targetboard-area">
+          <div class="targetboard">
+            <div class="targetboard-layer-9 targetboard-layer" score="2">
+              <div class="targetboard-layer-8 targetboard-layer" score="3">
+                <div class="targetboard-layer-7 targetboard-layer" score="4">
+                  <div class="targetboard-layer-6 targetboard-layer" score="5">
+                    <div
+                      class="targetboard-layer-5 targetboard-layer"
+                      score="6"
+                    >
+                      <div
+                        class="targetboard-layer-4 targetboard-layer"
+                        score="7"
+                      >
                         <div
-                          class="targetboard-layer-1 targetboard-layer"
-                        ></div>
+                          class="targetboard-layer-3 targetboard-layer"
+                          score="8"
+                        >
+                          <div
+                            class="targetboard-layer-2 targetboard-layer"
+                            score="9"
+                          >
+                            <div
+                              class="targetboard-layer-1 targetboard-layer"
+                              score="10"
+                            ></div>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -209,22 +282,45 @@
           </div>
         </div>
       </div>
+      <div class="score-area">
+        <div class="score">No score</div>
+      </div>
     </div>
 
     <script>
       const dotRed = document.getElementById('dot-red');
       const dotBlue = document.getElementById('dot-blue');
       const blueDotSpeedSlider = document.getElementById('blueDotSpeedSlider');
+      const scoreArea = document.querySelector('.score-area');
+      const targetboardArea = document.querySelector('.targetboard-area');
+      const targetboardLayers = Array.from(
+        document.getElementsByClassName('targetboard-layer'),
+      );
+      const clearBtn = document.querySelector('.clear-btn');
       const screenWidth = window.innerWidth;
       const screenHeight = window.innerHeight;
       let dotBluePosition = 20;
       let dotBlueDirection = 'down';
       let dotSpeed = 5;
+      let arrayScores = [];
+
+      targetboardLayers.forEach((targetboardLayer) => {
+        targetboardLayer.addEventListener('click', () => {
+          event.stopPropagation(); // Stop the event from propagating to the parent element
+          handleDartboardClick(targetboardLayer.getAttribute('score'));
+        });
+      });
+
+      clearBtn.addEventListener('click', () => {
+        removeAllTargetSpots();
+        arrayScores = [];
+        scoreArea.innerHTML = '<div class="score">No score</div>';
+      });
 
       // Function to move the dot randomly within the right side of the screen the screen
       function moveDotRed() {
         const randomX = Math.floor(
-          Math.random() * (screenWidth / 2) + screenWidth / 2
+          Math.random() * (screenWidth / 2) + screenWidth / 2 - 20,
         );
         const randomY = Math.floor(Math.random() * screenHeight - 20);
         dotRed.style.left = randomX + 'px';
@@ -247,6 +343,48 @@
 
         dotBlue.style.top = dotBluePosition + 'px';
       }
+
+      handleDartboardClick = (Score) => {
+        showClickedAreaOnDartboard(Score);
+        addScoreToScoreArea(Score);
+      };
+
+      removeAllTargetSpots = () => {
+        const targetSpots = Array.from(
+          document.getElementsByClassName('target-spot'),
+        );
+        targetSpots.forEach((targetSpot) => {
+          targetSpot.remove();
+        });
+      };
+
+      showClickedAreaOnDartboard = (Score) => {
+        console.log('Score: ', Score);
+        const targetSpot = document.createElement('div');
+        targetSpot.classList.add('target-spot');
+        targetSpot.style.position = 'absolute';
+
+        // Set the target spot based on event coordinates and scroll position
+        targetSpot.style.left = event.clientX + window.scrollX + 'px';
+        targetSpot.style.top = event.clientY + window.scrollY + 'px';
+
+        // Add the target spot to the dartboard
+        targetboardArea.appendChild(targetSpot);
+      };
+
+      addScoreToScoreArea = (Score) => {
+        // Add score to score area
+        arrayScores.push(Score);
+        // Show score in score area
+        html = '';
+        arrayScores.forEach((score) => {
+          html += `<div class="score">Score: ${score}</div>`;
+        });
+        scoreArea.innerHTML = html;
+
+        // Scroll to bottom of score area
+        scoreArea.scrollTop = scoreArea.scrollHeight;
+      };
 
       // Function to start moving the dot periodically
       function startMovingDots() {
