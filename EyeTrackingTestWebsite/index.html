@@ -60,16 +60,12 @@
 
       .score-area {
         height: 16rem;
-        width: 5rem;
+        width: 6rem;
         text-align: right;
         padding: 0.5rem;
         border: 1px solid black;
         overflow-y: scroll;
       }
-
-      /* .targetboard-area {
-        height: 20rem;
-      } */
 
       .clear-btn {
         padding: 0.4rem 1rem;
@@ -177,17 +173,6 @@
         border-radius: 50%;
         background-color: limegreen;
       }
-
-      /* .gaze {
-        position: absolute;
-        width: 100px;
-        height: 100px;
-        border-radius: 50%;
-        border: 2px solid red;
-        z-index: 9999;
-        pointer-events: none;
-        display: none;
-      } */
     </style>
   </head>
   <body>
@@ -195,6 +180,7 @@
     <h2>1. Tracking movement</h2>
 
     <!-- GazeData -->
+    <button id="gazecloudbtn">Start GazeCloud</button>
     <div id="gaze" class="dot dot-green"></div>
     <div id="GazeData"></div>
     <div id="HeadPoseData"></div>
@@ -330,6 +316,10 @@
       let arrayScores = [];
 
       // GazeCloudAPI
+      const gazecloudbtn = document.getElementById('gazecloudbtn');
+      gazecloudbtn.onclick = function () {
+        GazeCloudAPI.StartEyeTracking();
+      };
       let GazeCalibrationComplete = false;
 
       var x = GazeData.docX;
@@ -338,10 +328,9 @@
       x -= gaze.clientWidth / 2;
       y -= gaze.clientHeight / 2;
 
-      GazeCloudAPI.StartEyeTracking();
-
       function PlotGaze(GazeData) {
         // if (!GazeCalibrationComplete) return;
+        console.log(GazeData);
         document.getElementById('GazeData').innerHTML =
           'GazeX: ' + GazeData.GazeX + ' GazeY: ' + GazeData.GazeY;
         document.getElementById('HeadPoseData').innerHTML =
@@ -369,6 +358,15 @@
           if (gaze.style.display == 'block') gaze.style.display = 'none';
         } else {
           if (gaze.style.display == 'none') gaze.style.display = 'block';
+        }
+
+        // If looking at top of the page, scroll up
+        if (GazeData.GazeY < 100) {
+          window.scrollBy(0, -10);
+        }
+        // If looking at bottom of the page, scroll down
+        if (GazeData.GazeY > screenHeight - 100) {
+          window.scrollBy(0, 10);
         }
       }
 
