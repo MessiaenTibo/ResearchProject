@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
   console.log('popup.js loaded');
+
   // *** Scrolling ***
   const pageUpBtn = document.getElementById('pageUpBtn');
   const pageDownBtn = document.getElementById('pageDownBtn');
