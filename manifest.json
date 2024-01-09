@@ -4,6 +4,9 @@
     "version": "1.0",
     "description": "An extension to scroll the active tab using Page Up and Page Down buttons.",
     "permissions": ["storage", "declarativeContent", "activeTab", "scripting"],
+    "content_security_policy": {
+      "extension_pages": "script-src 'self'; object-src 'self'; script-src-elem 'self' 'unsafe-inline' https://api.gazerecorder.com/GazeCloudAPI.js"
+    },
     "icons": {
       "16": "img/icon16.png",
       "48": "img/icon48.png"
