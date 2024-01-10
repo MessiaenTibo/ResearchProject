@@ -30,8 +30,11 @@ def calculate_EAR(eye):
 # Variables 
 blink_thresh = 0.45
 succ_frame = 2
-count_frame = 0
-total_blinks = 0
+# count_frame = 0
+count_frame_left = 0
+count_frame_right = 0
+total_blinks_left = 0
+total_blinks_right = 0
 
 # Eye landmarks 
 (L_start, L_end) = face_utils.FACIAL_LANDMARKS_IDXS["left_eye"] 
@@ -40,6 +43,7 @@ total_blinks = 0
 # Initializing the Models for Landmark and 
 # face Detection 
 detector = dlib.get_frontal_face_detector() 
+# landmark_predict = dlib.shape_predictor('C:\\TIBO\\ResearchProject\\ResearchProject\\backend\\shape_predictor_68_face_landmarks.dat')
 landmark_predict = dlib.shape_predictor('C:\\TIBO\\ResearchProject\\ResearchProject\\backend\\shape_predictor_68_face_landmarks.dat')
 
 while 1:
@@ -79,16 +83,30 @@ while 1:
 
             # Avg of left and right eye EAR
             avg = (left_EAR + right_EAR) / 2
-            if avg < blink_thresh:
-                count_frame += 1  # incrementing the frame count
+            # if avg < blink_thresh:
+            #     count_frame += 1  # incrementing the frame count
+            # else:
+            #     if count_frame >= succ_frame:
+            #         total_blinks += 1  # increment the total blink count
+            #     count_frame = 0
+            if left_EAR < blink_thresh:
+                count_frame_left  += 1  # incrementing the frame count
             else:
-                if count_frame >= succ_frame:
-                    total_blinks += 1  # increment the total blink count
-                count_frame = 0
+                if count_frame_left  >= succ_frame:
+                    total_blinks_left += 1
+                count_frame_left  = 0
+            
+            if right_EAR < blink_thresh:
+                count_frame_right += 1
+            else:
+                if count_frame_right >= succ_frame:
+                    total_blinks_right += 1
+                count_frame_right = 0
 
         # Always display blink count on the screen
-        cv2.putText(frame, f'Total Blinks: {total_blinks}', (30, 30),
-                    cv2.FONT_HERSHEY_DUPLEX, 1, (0, 200, 0), 1)
+        # cv2.putText(frame, f'Total Blinks: {total_blinks}', (30, 30),
+        #             cv2.FONT_HERSHEY_DUPLEX, 1, (0, 200, 0), 1)
+        cv2.putText(frame, f'Total Blinks Left: {total_blinks_left} | Right: {total_blinks_right}', (30, 30), cv2.FONT_HERSHEY_DUPLEX, 1, (0, 200, 0), 1)
 
         cv2.imshow("Video", frame)
         if cv2.waitKey(5) & 0xFF == ord('q'):
