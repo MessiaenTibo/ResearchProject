@@ -1,5 +1,20 @@
 # ResearchProject
 
+## Introduction
+This project is a research project for the course Research Project at the Howest-Kortrijk. The goal of this project is to research the possibilities of using eye-tracking to interact with an website. The project is divided into two parts: a chrome extension and a backend. The chrome extension is used to track the eye-movements of the user and the backen is used to detect eye-blinks.
+
+## Installation
+
+
+## Usage
+
+## Current problems
+1) Content Security Policy errors in chrome extension over de eye-tracking
+2) Blink detection enkel in backend
+3) Camera nodig in extensie voor eye-tracking + nodig in backend voor eye-blinking. (er is maar 1 camera)
+4) klikken op een pagina?
+
+
 ## links
 1) API for eye tracking: <br>
 https://gazerecorder.com/
