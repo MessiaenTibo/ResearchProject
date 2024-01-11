@@ -10,6 +10,7 @@ from imutils import face_utils
 
 # from imutils import 
 
+# Choose a video file or use the webcam
 # cam = cv2.VideoCapture('assets/my_blink.mp4') 
 cam = cv2.VideoCapture(0) 
 
@@ -30,7 +31,6 @@ def calculate_EAR(eye):
 # Variables 
 blink_thresh = 0.45
 succ_frame = 2
-# count_frame = 0
 count_frame_left = 0
 count_frame_right = 0
 total_blinks_left = 0
@@ -42,8 +42,9 @@ total_blinks_right = 0
 
 # Initializing the Models for Landmark and 
 # face Detection 
-detector = dlib.get_frontal_face_detector() 
-# landmark_predict = dlib.shape_predictor('C:\\TIBO\\ResearchProject\\ResearchProject\\backend\\shape_predictor_68_face_landmarks.dat')
+detector = dlib.get_frontal_face_detector()
+
+# Use the pretrained model for the landmark from dlib
 landmark_predict = dlib.shape_predictor('C:\\TIBO\\ResearchProject\\ResearchProject\\backend\\shape_predictor_68_face_landmarks.dat')
 
 while 1:
@@ -77,25 +78,18 @@ while 1:
             lefteye = shape[L_start: L_end]
             righteye = shape[R_start:R_end]
 
-            # Calculate the EAR
+            # Calculate the EAR (Eye Aspect Ratio)
             left_EAR = calculate_EAR(lefteye)
             right_EAR = calculate_EAR(righteye)
 
-            # Avg of left and right eye EAR
-            avg = (left_EAR + right_EAR) / 2
-            # if avg < blink_thresh:
-            #     count_frame += 1  # incrementing the frame count
-            # else:
-            #     if count_frame >= succ_frame:
-            #         total_blinks += 1  # increment the total blink count
-            #     count_frame = 0
+            # Check if the left eye is closed
             if left_EAR < blink_thresh:
-                count_frame_left  += 1  # incrementing the frame count
+                count_frame_left  += 1
             else:
                 if count_frame_left  >= succ_frame:
                     total_blinks_left += 1
                 count_frame_left  = 0
-            
+            # Check if the rigth eye is closed
             if right_EAR < blink_thresh:
                 count_frame_right += 1
             else:
@@ -104,8 +98,6 @@ while 1:
                 count_frame_right = 0
 
         # Always display blink count on the screen
-        # cv2.putText(frame, f'Total Blinks: {total_blinks}', (30, 30),
-        #             cv2.FONT_HERSHEY_DUPLEX, 1, (0, 200, 0), 1)
         cv2.putText(frame, f'Total Blinks Left: {total_blinks_left} | Right: {total_blinks_right}', (30, 30), cv2.FONT_HERSHEY_DUPLEX, 1, (0, 200, 0), 1)
 
         cv2.imshow("Video", frame)
