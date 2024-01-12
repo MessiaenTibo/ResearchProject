@@ -4378,7 +4378,6 @@ var processClick = GazeCloudAPI.processClick;
 
 // Start
 
-const screenWidth = window.innerWidth;
 const screenHeight = window.innerHeight;
 
 GazeCloudAPI.StartEyeTracking();

@@ -91,6 +91,9 @@ async function predictWebcam() {
 
 let OldValueEyeBlinkLeft = 0;
 let OldValueEyeBlinkRight = 0;
+let lastDoubleBlinkTime = -1;
+
+const GazePointer = document.getElementById('gaze');
 
 function drawBlendShapes(el, blendShapes) {
   if (!blendShapes.length) {
@@ -107,11 +110,53 @@ function drawBlendShapes(el, blendShapes) {
       shape.categoryName === 'eyeBlinkRight' ? shape.score : null,
     )
     .filter((shape) => shape !== null)[0];
-  if (valueEyeBlinkLeft > 0.5 && OldValueEyeBlinkLeft < 0.5) {
-    console.log('eyeBlinkLeft detected');
+  //   if (valueEyeBlinkLeft > 0.5 && OldValueEyeBlinkLeft < 0.5) {
+  //     console.log('eyeBlinkLeft detected');
+  //   }
+  //   if (valueEyeBlinkRight > 0.5 && OldValueEyeBlinkRight < 0.5) {
+  //     console.log('eyeBlinkRight detected');
+  //   }
+
+  // Special Event 1: if the user blinks with the left eye only
+  if (
+    valueEyeBlinkLeft > 0.5 &&
+    valueEyeBlinkRight < 0.5 &&
+    OldValueEyeBlinkLeft < 0.5 &&
+    OldValueEyeBlinkRight < 0.5
+  ) {
+    console.log('Special Event 1: if the user blinks with the left eye only');
+    GazePointer.style.backgroundColor = 'red';
   }
-  if (valueEyeBlinkRight > 0.5 && OldValueEyeBlinkRight < 0.5) {
-    console.log('eyeBlinkRight detected');
+  // Special Event 2: if the user blinks with the right eye only
+  if (
+    valueEyeBlinkLeft < 0.5 &&
+    valueEyeBlinkRight > 0.5 &&
+    OldValueEyeBlinkLeft < 0.5 &&
+    OldValueEyeBlinkRight < 0.5
+  ) {
+    console.log('Special Event 2: if the user blinks with the right eye only');
+    GazePointer.style.backgroundColor = 'blue';
+  }
+  // Special Event 3: if the user blinks with both eyes twice in a row (within 1 second)
+  if (
+    valueEyeBlinkLeft > 0.5 &&
+    valueEyeBlinkRight > 0.5 &&
+    OldValueEyeBlinkLeft < 0.5 &&
+    OldValueEyeBlinkRight < 0.5
+  ) {
+    if (lastDoubleBlinkTime === -1) {
+      lastDoubleBlinkTime = performance.now();
+    } else {
+      if (performance.now() - lastDoubleBlinkTime < 1000) {
+        console.log(
+          'Special Event 3: if the user blinks with both eyes twice in a row (within 1 second)',
+        );
+        GazePointer.style.backgroundColor = 'orange';
+        lastDoubleBlinkTime = -1;
+      } else {
+        lastDoubleBlinkTime = performance.now();
+      }
+    }
   }
   OldValueEyeBlinkLeft = valueEyeBlinkLeft;
   OldValueEyeBlinkRight = valueEyeBlinkRight;
