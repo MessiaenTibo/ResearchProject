@@ -2,10 +2,13 @@ document.addEventListener('DOMContentLoaded', function () {
   console.log('popup.js loaded');
 
   // *** Start Eye Tracking ***
-  const startBtn = document.getElementById('startBtn');
-  startBtn.addEventListener('click', function () {
-    chrome.runtime.sendMessage({ action: 'LoadEyeTracking' });
-  });
+  chrome.runtime.sendMessage({ action: 'startEyeTracking' });
+
+  // *** Start Eye Tracking ***
+  // const startBtn = document.getElementById('startBtn');
+  // startBtn.addEventListener('click', function () {
+  //   chrome.runtime.sendMessage({ action: 'startEyeTracking' });
+  // });
 
   // *** Scrolling ***
   // const pageUpBtn = document.getElementById('pageUpBtn');

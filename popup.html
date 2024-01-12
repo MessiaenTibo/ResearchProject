@@ -1,46 +1,47 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Page Scroll</title>
-    <meta
-      http-equiv="Content-Security-Policy"
-      content="script-src 'self' 'unsafe-inline' 'wasm-unsafe-eval' 'inline-speculation-rules' http://localhost:* http://127.0.0.1:* https://api.gazerecorder.com; script-src-elem 'self'"
-    />
-    <script src="popup.js" defer></script>
-    <!-- Fix: adding GazeCloudApi script to local files. Because of Content Security Policy -->
-    <!-- <script src="https://api.gazerecorder.com/GazeCloudAPI.js"></script> -->
-    <script src="GazeCloudAPI.js"></script>
-  </head>
 
-  <body>
-    <!-- <h1>Eye tracking extension</h1>
-    <h2>Eye tracking</h2>
-    <button id="startEyeTrackingBtn">Start GazeCloudApi</button>
-    <div id="gaze" class="dot dot-green"></div>
-    <div id="GazeData"></div>
-    <div id="HeadPoseData"></div>
-    <div id="HeadRotData"></div>
-    <h2>Scrolling</h2>
-    <button id="pageUpBtn">Page Up</button>
-    <button id="pageDownBtn">Page Down</button> -->
-    <button id="startBtn">Start Eye-tracking</button>
-  </body>
-  <style>
-    /* body {
+<head>
+  <title>Page Scroll</title>
+  <meta http-equiv="Content-Security-Policy"
+    content="script-src 'self' 'unsafe-inline' 'wasm-unsafe-eval' 'inline-speculation-rules' http://localhost:* http://127.0.0.1:* https://api.gazerecorder.com; script-src-elem 'self'" />
+  <script src="popup.js" defer></script>
+  <!-- Fix: adding GazeCloudApi script to local files. Because of Content Security Policy -->
+  <!-- <script src="https://api.gazerecorder.com/GazeCloudAPI.js"></script> -->
+  <!-- <script src="GazeCloudAPI.js"></script> -->
+</head>
+
+<body>
+  <h1>Eye tracking extension</h1>
+  <!-- <h2>Eye tracking</h2>
+  <button id="startEyeTrackingBtn">Start GazeCloudApi</button>
+  <div id="gaze" class="dot dot-green"></div>
+  <div id="GazeData"></div>
+  <div id="HeadPoseData"></div>
+  <div id="HeadRotData"></div>
+  <h2>Scrolling</h2>
+  <button id="pageUpBtn">Page Up</button>
+  <button id="pageDownBtn">Page Down</button> -->
+  <!-- <button id="startBtn">Start Eye-tracking</button> -->
+</body>
+<style>
+  /* body {
       width: 600px;
       height: 600px;
     } */
-    .dot {
-      width: 2rem;
-      height: 2rem;
-      border-radius: 50%;
-      position: absolute;
-      animation-timing-function: linear;
-    }
-    .dot-green {
-      background-color: green;
-      opacity: 0.5;
-      z-index: 9999;
-    }
-  </style>
+  .dot {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    position: absolute;
+    animation-timing-function: linear;
+  }
+
+  .dot-green {
+    background-color: green;
+    opacity: 0.5;
+    z-index: 9999;
+  }
+</style>
+
 </html>
