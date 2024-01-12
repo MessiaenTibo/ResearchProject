@@ -27,3 +27,6 @@ https://youtu.be/tvgJ9DsgVso
 
 4) Eye blink detection:<br>
 https://www.geeksforgeeks.org/eye-blink-detection-with-opencv-python-and-dlib/
+
+5) Eye blink detection MediaPipe Face Landmark Detection:<br>
+https://mediapipe-studio.webapps.google.com/studio/demo/face_landmarker
