@@ -78,7 +78,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 
               // Create Custom Element
               const element = document.createElement('div');
-              element.innerHTML = `<div style="position: relative;">
+              element.innerHTML = `<div style="position: absolute; top: 0;">
               <video id="webcam" style="position: absolute" autoplay playsinline></video>
               <canvas class="output_canvas" id="output_canvas"
                   style="position: absolute; left: 0px; top: 0px;"></canvas>
