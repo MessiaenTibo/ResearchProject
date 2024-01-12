@@ -92,6 +92,10 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 
               // Append the script element to the head
               document.head.appendChild(scriptElement2);
+            } else if (action === 'stopEyeTracking') {
+              console.log('stopEyeTracking');
+            } else if (action === 'stopBlinkDetection') {
+              console.log('stopBlinkDetection');
             }
           },
           args: [request.action],

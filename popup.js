@@ -7,6 +7,12 @@ document.addEventListener('DOMContentLoaded', function () {
   // *** Start Blink Detection ***
   chrome.runtime.sendMessage({ action: 'startBlinkDetection' });
 
+  const stopBtn = document.getElementById('stopBtn');
+  stopBtn.addEventListener('click', function () {
+    chrome.runtime.sendMessage({ action: 'stopEyeTracking' });
+    chrome.runtime.sendMessage({ action: 'stopBlinkDetection' });
+  });
+
   // *** Start Eye Tracking ***
   // const startBtn = document.getElementById('startBtn');
   // startBtn.addEventListener('click', function () {
