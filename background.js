@@ -3,7 +3,8 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     request.action === 'simulatePageUp' ||
     request.action === 'simulatePageDown' ||
     request.action === 'startEyeTracking' ||
-    request.action === 'startBlinkDetection'
+    request.action === 'startBlinkDetection' ||
+    request.action === 'stop'
   ) {
     // Find the currently active tab
     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
@@ -41,6 +42,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
               // Create script element
               const localScriptURL = chrome.runtime.getURL('GazeCloudApi.js');
               const scriptElement = document.createElement('script');
+              scriptElement.id = 'GazeCloudApiScript';
               scriptElement.src = localScriptURL;
 
               // Set up onload event to ensure the script is fully loaded
@@ -74,6 +76,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
               );
               const scriptElement2 = document.createElement('script');
               scriptElement2.type = 'module';
+              scriptElement2.id = 'MediapipeFaceLandmarkerScript';
               scriptElement2.src = localScriptURL;
 
               // Create Custom Element
@@ -92,10 +95,9 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 
               // Append the script element to the head
               document.head.appendChild(scriptElement2);
-            } else if (action === 'stopEyeTracking') {
-              console.log('stopEyeTracking');
-            } else if (action === 'stopBlinkDetection') {
-              console.log('stopBlinkDetection');
+            } else if (action === 'stop') {
+              // Reload the page to stop the eye tracking and blink detection
+              location.reload();
             }
           },
           args: [request.action],

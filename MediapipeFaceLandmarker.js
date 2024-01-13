@@ -110,12 +110,6 @@ function drawBlendShapes(el, blendShapes) {
       shape.categoryName === 'eyeBlinkRight' ? shape.score : null,
     )
     .filter((shape) => shape !== null)[0];
-  //   if (valueEyeBlinkLeft > 0.5 && OldValueEyeBlinkLeft < 0.5) {
-  //     console.log('eyeBlinkLeft detected');
-  //   }
-  //   if (valueEyeBlinkRight > 0.5 && OldValueEyeBlinkRight < 0.5) {
-  //     console.log('eyeBlinkRight detected');
-  //   }
 
   // Special Event 1: if the user blinks with the left eye only
   if (

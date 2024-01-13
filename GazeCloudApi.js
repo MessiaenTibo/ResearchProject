@@ -4378,31 +4378,14 @@ var processClick = GazeCloudAPI.processClick;
 
 // Start
 
-const screenHeight = window.innerHeight;
+const screenHeight2 = window.innerHeight;
 
 GazeCloudAPI.StartEyeTracking();
 
 GazeCloudAPI.OnResult = PlotGaze;
 
 function PlotGaze(GazeData) {
-  // if (!GazeCalibrationComplete) return;
   console.log(GazeData);
-  //   document.getElementById('GazeData').innerHTML =
-  //     'GazeX: ' + GazeData.GazeX + ' GazeY: ' + GazeData.GazeY;
-  //   document.getElementById('HeadPoseData').innerHTML =
-  //     ' HeadX: ' +
-  //     GazeData.HeadX +
-  //     ' HeadY: ' +
-  //     GazeData.HeadY +
-  //     ' HeadZ: ' +
-  //     GazeData.HeadZ;
-  //   document.getElementById('HeadRotData').innerHTML =
-  //     ' Yaw: ' +
-  //     GazeData.HeadYaw +
-  //     ' Pitch: ' +
-  //     GazeData.HeadPitch +
-  //     ' Roll: ' +
-  //     GazeData.HeadRoll;
   var x = GazeData.docX;
   var y = GazeData.docY;
   var gaze = document.getElementById('gaze');
@@ -4421,7 +4404,7 @@ function PlotGaze(GazeData) {
     window.scrollBy(0, -10);
   }
   // If looking at bottom of the page, scroll down
-  if (GazeData.GazeY > screenHeight - 100) {
+  if (GazeData.GazeY > screenHeight2 - 100) {
     window.scrollBy(0, 10);
   }
 }
