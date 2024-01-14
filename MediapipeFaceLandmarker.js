@@ -130,6 +130,7 @@ function drawBlendShapes(el, blendShapes) {
   ) {
     console.log('Special Event 2: if the user blinks with the right eye only');
     GazePointer.style.backgroundColor = 'blue';
+    EmulateClick();
   }
   // Special Event 3: if the user blinks with both eyes twice in a row (within 1 second)
   if (
@@ -154,4 +155,15 @@ function drawBlendShapes(el, blendShapes) {
   }
   OldValueEyeBlinkLeft = valueEyeBlinkLeft;
   OldValueEyeBlinkRight = valueEyeBlinkRight;
+}
+
+function EmulateClick() {
+  console.log('EmulateClick');
+  const element = document.elementFromPoint(
+    GazePointer.getBoundingClientRect().x,
+    GazePointer.getBoundingClientRect().y,
+  );
+  if (element) {
+    element.click();
+  }
 }

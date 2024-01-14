@@ -4384,19 +4384,22 @@ GazeCloudAPI.StartEyeTracking();
 
 GazeCloudAPI.OnResult = PlotGaze;
 
+let oldElement = null;
+let oldElementBorder = null;
+
 function PlotGaze(GazeData) {
   console.log(GazeData);
   var x = GazeData.docX;
   var y = GazeData.docY;
-  var gaze = document.getElementById('gaze');
-  x -= gaze.clientWidth / 2;
-  y -= gaze.clientHeight / 2;
-  gaze.style.left = x + 'px';
-  gaze.style.top = y + 'px';
+  var GazePointer = document.getElementById('gaze');
+  x -= GazePointer.clientWidth / 2;
+  y -= GazePointer.clientHeight / 2;
+  GazePointer.style.left = x + 'px';
+  GazePointer.style.top = y + 'px';
   if (GazeData.state != 0) {
-    if (gaze.style.display == 'block') gaze.style.display = 'none';
+    if (gaze.style.display == 'block') GazePointer.style.display = 'none';
   } else {
-    if (gaze.style.display == 'none') gaze.style.display = 'block';
+    if (gaze.style.display == 'none') GazePointer.style.display = 'block';
   }
 
   // If looking at top of the page, scroll up
@@ -4406,5 +4409,29 @@ function PlotGaze(GazeData) {
   // If looking at bottom of the page, scroll down
   if (GazeData.GazeY > screenHeight2 - 100) {
     window.scrollBy(0, 10);
+  }
+
+  // Hihglight the element being looked at
+  HighlightElement(GazePointer);
+}
+
+function HighlightElement(GazePointerElement) {
+  try {
+    const element = document.elementFromPoint(
+      GazePointerElement.getBoundingClientRect().x,
+      GazePointerElement.getBoundingClientRect().y,
+    );
+    if (element) {
+      // Reset old element back to original border
+      if (oldElement != null) oldElement.style.border = oldElementBorder;
+      // Set new element to be the old element
+      oldElement = element;
+      // Set the new border to be the old border
+      oldElementBorder = element.style.border;
+      // Set the new border to be red
+      element.style.border = '4px solid red';
+    }
+  } catch (e) {
+    console.log(e);
   }
 }
