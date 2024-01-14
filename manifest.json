@@ -9,7 +9,7 @@
   },
   "web_accessible_resources": [
     {
-      "resources": ["GazeCloudApi.js","MediapipeFaceLandmarker.js", "TaskVision.js"],
+      "resources": ["GazeCloudApi.js","MediapipeFaceLandmarker.js"],
       "matches": ["<all_urls>"]
     }
   ],
@@ -29,7 +29,7 @@
       "js": ["content.js"],
       "web_accessible_resources": [
         {
-          "resources": ["GazeCloudApi.js","MediapipeFaceLandmarker.js", "TaskVision.js"],
+          "resources": ["GazeCloudApi.js","MediapipeFaceLandmarker.js"],
           "matches": ["<all_urls>"]
         }
       ]
