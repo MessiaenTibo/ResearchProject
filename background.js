@@ -62,9 +62,6 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 
                 // Create Custom Element
                 Create_Custom_Element('div', 'id', 'gaze', '');
-                // Create_Custom_Element('div', 'id', 'GazeData', '');
-                // Create_Custom_Element('div', 'id', 'HeadPoseData', '');
-                // Create_Custom_Element('div', 'id', 'HeadRotData', '');
               };
 
               // Append the script element to the head

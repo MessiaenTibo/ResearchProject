@@ -147,6 +147,7 @@ function drawBlendShapes(el, blendShapes) {
           'Special Event 3: if the user blinks with both eyes twice in a row (within 1 second)',
         );
         GazePointer.style.backgroundColor = 'orange';
+        EmulateDoubleClick();
         lastDoubleBlinkTime = -1;
       } else {
         lastDoubleBlinkTime = performance.now();
@@ -164,6 +165,18 @@ function EmulateClick() {
     GazePointer.getBoundingClientRect().y,
   );
   if (element) {
+    element.click();
+  }
+}
+
+function EmulateDoubleClick() {
+  console.log('EmulateDoubleClick');
+  const element = document.elementFromPoint(
+    GazePointer.getBoundingClientRect().x,
+    GazePointer.getBoundingClientRect().y,
+  );
+  if (element) {
+    element.click();
     element.click();
   }
 }
