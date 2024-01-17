@@ -224,13 +224,13 @@ var GazeCloudAPI = new (function GazeCloudAPIInit() {
       return t
         ? t.call(e)
         : {
-            next: function () {
-              return (
-                e && n >= e.length && (e = void 0),
-                { value: e && e[n++], done: !e }
-              );
-            },
-          };
+          next: function () {
+            return (
+              e && n >= e.length && (e = void 0),
+              { value: e && e[n++], done: !e }
+            );
+          },
+        };
     }
     function r(e, t) {
       var n = 'function' == typeof Symbol && e[Symbol.iterator];
@@ -240,7 +240,7 @@ var GazeCloudAPI = new (function GazeCloudAPIInit() {
         a = n.call(e),
         i = [];
       try {
-        for (; (void 0 === t || t-- > 0) && !(r = a.next()).done; )
+        for (; (void 0 === t || t-- > 0) && !(r = a.next()).done;)
           i.push(r.value);
       } catch (e) {
         o = { error: e };
@@ -272,16 +272,16 @@ var GazeCloudAPI = new (function GazeCloudAPIInit() {
         var t = e.rules || e.cssRules;
         return t
           ? Array.from(t).reduce(function (e, t) {
-              return (
-                e +
-                ((function (e) {
-                  return 'styleSheet' in e;
-                })((n = t))
-                  ? i(n.styleSheet) || ''
-                  : n.cssText)
-              );
-              var n;
-            }, '')
+            return (
+              e +
+              ((function (e) {
+                return 'styleSheet' in e;
+              })((n = t))
+                ? i(n.styleSheet) || ''
+                : n.cssText)
+            );
+            var n;
+          }, '')
           : null;
       } catch (e) {
         return null;
@@ -326,24 +326,24 @@ var GazeCloudAPI = new (function GazeCloudAPIInit() {
       return 'src' === t || 'href' === t
         ? d(e, n)
         : 'srcset' === t
-        ? (function (e, t) {
+          ? (function (e, t) {
             return '' === t.trim()
               ? t
               : t
-                  .split(',')
-                  .map(function (t) {
-                    var n = t.trimLeft().trimRight().split(' ');
-                    return 2 === n.length
-                      ? d(e, n[0]) + ' ' + n[1]
-                      : 1 === n.length
+                .split(',')
+                .map(function (t) {
+                  var n = t.trimLeft().trimRight().split(' ');
+                  return 2 === n.length
+                    ? d(e, n[0]) + ' ' + n[1]
+                    : 1 === n.length
                       ? '' + d(e, n[0])
                       : '';
-                  })
-                  .join(',');
+                })
+                .join(',');
           })(e, n)
-        : 'style' === t
-        ? l(n, location.href)
-        : n;
+          : 'style' === t
+            ? l(n, location.href)
+            : n;
     }
     function p(t, n, r, o, u, c, s) {
       void 0 === u && (u = !1),
@@ -366,13 +366,13 @@ var GazeCloudAPI = new (function GazeCloudAPIInit() {
               'string' == typeof r
                 ? (u = t.classList.contains(r))
                 : t.classList.forEach(function (e) {
-                    r.test(e) && (u = !0);
-                  });
+                  r.test(e) && (u = !0);
+                });
               for (
                 var c = t.tagName.toLowerCase(),
-                  s = {},
-                  d = 0,
-                  p = Array.from(t.attributes);
+                s = {},
+                d = 0,
+                p = Array.from(t.attributes);
                 d < p.length;
                 d++
               ) {
@@ -395,12 +395,12 @@ var GazeCloudAPI = new (function GazeCloudAPIInit() {
                   !(t.innerText || t.textContent || '').trim().length &&
                   (y = i(t.sheet)) &&
                   (s._cssText = l(y, location.href)),
-                ('input' !== c && 'textarea' !== c && 'select' !== c) ||
+                  ('input' !== c && 'textarea' !== c && 'select' !== c) ||
                   ((v = t.value),
-                  'radio' !== s.type && 'checkbox' !== s.type && v
-                    ? (s.value = a ? '*'.repeat(v.length) : v)
-                    : t.checked && (s.checked = t.checked)),
-                'option' === c)
+                    'radio' !== s.type && 'checkbox' !== s.type && v
+                      ? (s.value = a ? '*'.repeat(v.length) : v)
+                      : t.checked && (s.checked = t.checked)),
+                  'option' === c)
               ) {
                 var b = t.parentElement;
                 s.value === b.value && (s.selected = t.selected);
@@ -418,7 +418,7 @@ var GazeCloudAPI = new (function GazeCloudAPIInit() {
                 childNodes: [],
                 isSVG:
                   ((S = t),
-                  'svg' === S.tagName || S instanceof SVGElement || void 0),
+                    'svg' === S.tagName || S instanceof SVGElement || void 0),
                 needBlock: u,
               };
             case t.TEXT_NODE:
@@ -446,7 +446,7 @@ var GazeCloudAPI = new (function GazeCloudAPIInit() {
       var v = !u;
       if (
         (h.type === e.Element && ((v = v && !h.needBlock), delete h.needBlock),
-        (h.type === e.Document || h.type === e.Element) && v)
+          (h.type === e.Document || h.type === e.Element) && v)
       )
         for (var y = 0, g = Array.from(t.childNodes); y < g.length; y++) {
           var b = p(g[y], n, r, o, u, c, s);
@@ -480,9 +480,9 @@ var GazeCloudAPI = new (function GazeCloudAPIInit() {
           var t = e.__sn && e.__sn.id;
           delete b.map[t],
             e.childNodes &&
-              e.childNodes.forEach(function (e) {
-                return b.removeNodeFromMap(e);
-              });
+            e.childNodes.forEach(function (e) {
+              return b.removeNodeFromMap(e);
+            });
         },
         has: function (e) {
           return b.map.hasOwnProperty(e);
@@ -501,12 +501,12 @@ var GazeCloudAPI = new (function GazeCloudAPIInit() {
         u <= 0 || u > t
           ? (r && (window.clearTimeout(r), (r = null)), (o = i), e.apply(c, s))
           : r ||
-            !1 === n.trailing ||
-            (r = window.setTimeout(function () {
-              (o = !1 === n.leading ? 0 : Date.now()),
-                (r = null),
-                e.apply(c, s);
-            }, u));
+          !1 === n.trailing ||
+          (r = window.setTimeout(function () {
+            (o = !1 === n.leading ? 0 : Date.now()),
+              (r = null),
+              e.apply(c, s);
+          }, u));
       };
     }
     function C() {
@@ -531,8 +531,8 @@ var GazeCloudAPI = new (function GazeCloudAPIInit() {
           'string' == typeof t
             ? (n = e.classList.contains(t))
             : e.classList.forEach(function (e) {
-                t.test(e) && (n = !0);
-              }),
+              t.test(e) && (n = !0);
+            }),
           n || N(e.parentNode, t)
         );
       }
@@ -667,19 +667,19 @@ var GazeCloudAPI = new (function GazeCloudAPIInit() {
                     (v.has(e)
                       ? (I(v, e), g.add(e))
                       : (v.has(r) && -1 === n) ||
-                        (function e(t) {
-                          var n = b.getId(t);
-                          return (
-                            !b.has(n) ||
-                            ((!t.parentNode ||
-                              t.parentNode.nodeType !== t.DOCUMENT_NODE) &&
-                              (!t.parentNode || e(t.parentNode)))
-                          );
-                        })(r) ||
-                        (y.has(e) && E[x(n, o)]
-                          ? I(y, e)
-                          : m.push({ parentId: o, id: n })),
-                    b.removeNodeFromMap(e));
+                      (function e(t) {
+                        var n = b.getId(t);
+                        return (
+                          !b.has(n) ||
+                          ((!t.parentNode ||
+                            t.parentNode.nodeType !== t.DOCUMENT_NODE) &&
+                            (!t.parentNode || e(t.parentNode)))
+                        );
+                      })(r) ||
+                      (y.has(e) && E[x(n, o)]
+                        ? I(y, e)
+                        : m.push({ parentId: o, id: n })),
+                      b.removeNodeFromMap(e));
                 });
           }
         });
@@ -849,8 +849,8 @@ var GazeCloudAPI = new (function GazeCloudAPIInit() {
         }
       }
       var c = ['input', 'change'].map(function (e) {
-          return m(e, i);
-        }),
+        return m(e, i);
+      }),
         s = Object.getOwnPropertyDescriptor(
           HTMLInputElement.prototype,
           'value',
@@ -863,41 +863,41 @@ var GazeCloudAPI = new (function GazeCloudAPIInit() {
         ];
       return (
         s &&
-          s.set &&
-          c.push.apply(
-            c,
-            o(
-              l.map(function (e) {
-                return (function e(t, n, r, o) {
-                  var a = Object.getOwnPropertyDescriptor(t, n);
-                  return (
-                    Object.defineProperty(
-                      t,
-                      n,
-                      o
-                        ? r
-                        : {
-                            set: function (e) {
-                              var t = this;
-                              setTimeout(function () {
-                                r.set.call(t, e);
-                              }, 0),
-                                a && a.set && a.set.call(this, e);
-                            },
-                          },
-                    ),
-                    function () {
-                      return e(t, n, a || {}, !0);
-                    }
-                  );
-                })(e[0], e[1], {
-                  set: function () {
-                    i({ target: this });
-                  },
-                });
-              }),
-            ),
+        s.set &&
+        c.push.apply(
+          c,
+          o(
+            l.map(function (e) {
+              return (function e(t, n, r, o) {
+                var a = Object.getOwnPropertyDescriptor(t, n);
+                return (
+                  Object.defineProperty(
+                    t,
+                    n,
+                    o
+                      ? r
+                      : {
+                        set: function (e) {
+                          var t = this;
+                          setTimeout(function () {
+                            r.set.call(t, e);
+                          }, 0),
+                            a && a.set && a.set.call(this, e);
+                        },
+                      },
+                  ),
+                  function () {
+                    return e(t, n, a || {}, !0);
+                  }
+                );
+              })(e[0], e[1], {
+                set: function () {
+                  i({ target: this });
+                },
+              });
+            }),
           ),
+        ),
         function () {
           c.forEach(function (e) {
             return e();
@@ -957,43 +957,43 @@ var GazeCloudAPI = new (function GazeCloudAPIInit() {
         l = k(e.mutationCb, e.blockClass, e.inlineStylesheet, e.maskAllInputs),
         d =
           ((n = e.mousemoveCb),
-          (r = e.mousemoveWait),
-          (i = []),
-          (u = E(function (e) {
-            var t = Date.now() - a;
-            n(
-              i.map(function (e) {
-                return (e.timeOffset -= t), e;
-              }),
-              e ? v.TouchMove : v.MouseMove,
-            ),
-              (i = []),
-              (a = null);
-          }, 500)),
-          (c = E(
-            function (e) {
-              var t = e.target,
-                n = T(e) ? e.changedTouches[0] : e,
-                r = n.clientX,
-                o = n.clientY;
-              a || (a = Date.now()),
-                i.push({
-                  x: r,
-                  y: o,
-                  id: b.getId(t),
-                  timeOffset: Date.now() - a,
+            (r = e.mousemoveWait),
+            (i = []),
+            (u = E(function (e) {
+              var t = Date.now() - a;
+              n(
+                i.map(function (e) {
+                  return (e.timeOffset -= t), e;
                 }),
-                u(T(e));
-            },
-            r,
-            { trailing: !1 },
-          )),
-          (s = [m('mousemove', c), m('touchmove', c)]),
-          function () {
-            s.forEach(function (e) {
-              return e();
-            });
-          }),
+                e ? v.TouchMove : v.MouseMove,
+              ),
+                (i = []),
+                (a = null);
+            }, 500)),
+            (c = E(
+              function (e) {
+                var t = e.target,
+                  n = T(e) ? e.changedTouches[0] : e,
+                  r = n.clientX,
+                  o = n.clientY;
+                a || (a = Date.now()),
+                  i.push({
+                    x: r,
+                    y: o,
+                    id: b.getId(t),
+                    timeOffset: Date.now() - a,
+                  }),
+                  u(T(e));
+              },
+              r,
+              { trailing: !1 },
+            )),
+            (s = [m('mousemove', c), m('touchmove', c)]),
+            function () {
+              s.forEach(function (e) {
+                return e();
+              });
+            }),
         f = L(e.mouseInteractionCb, e.blockClass),
         p = (function (e, t) {
           return m(
@@ -1061,15 +1061,15 @@ var GazeCloudAPI = new (function GazeCloudAPIInit() {
             e,
           );
         var t = r(
-            (function (e, t, n, r) {
-              void 0 === t && (t = 'rr-block'),
-                void 0 === n && (n = !0),
-                void 0 === r && (r = !1);
-              var o = {};
-              return [p(e, e, o, t, !1, n, r), o];
-            })(document, c, f, g),
-            2,
-          ),
+          (function (e, t, n, r) {
+            void 0 === t && (t = 'rr-block'),
+              void 0 === n && (n = !0),
+              void 0 === r && (r = !1);
+            var o = {};
+            return [p(e, e, o, t, !1, n, r), o];
+          })(document, c, f, g),
+          2,
+        ),
           n = t[0],
           o = t[1];
         if (!n) return console.warn('Failed to snapshot the document');
@@ -1168,17 +1168,17 @@ var GazeCloudAPI = new (function GazeCloudAPIInit() {
         };
         return (
           'interactive' === document.readyState ||
-          'complete' === document.readyState
+            'complete' === document.readyState
             ? x()
             : D.push(
-                m(
-                  'load',
-                  function () {
-                    _(P({ type: h.Load, data: {} })), x();
-                  },
-                  window,
-                ),
+              m(
+                'load',
+                function () {
+                  _(P({ type: h.Load, data: {} })), x();
+                },
+                window,
               ),
+            ),
           function () {
             D.forEach(function (e) {
               return e();
@@ -1207,7 +1207,7 @@ var GazeCloudAPI = new (function GazeCloudAPIInit() {
         StopWebRec();
       }
       eventsWebRec.push(event);
-    } catch (e) {}
+    } catch (e) { }
   };
   //-----------------
   let eventsWebRec = [];
@@ -1271,7 +1271,7 @@ var GazeCloudAPI = new (function GazeCloudAPIInit() {
             }
           }
         }
-      } catch (e) {}
+      } catch (e) { }
     }
   }
 
@@ -1296,7 +1296,7 @@ var GazeCloudAPI = new (function GazeCloudAPIInit() {
           back += ' ';
         }
       }
-    } catch (e) {}
+    } catch (e) { }
   }
   var bsWebRecStreamRunig = false;
 
@@ -1563,7 +1563,7 @@ var GazeCloudAPI = new (function GazeCloudAPIInit() {
   }
   var CalDeviceRation = window.devicePixelRatio;
 
-  function etmp() {}
+  function etmp() { }
 
   function ShowCalibration() {
     if (Logg) Logg('ShowCalibration', 2);
@@ -2065,7 +2065,7 @@ var GazeCloudAPI = new (function GazeCloudAPIInit() {
               ss,
               ss,
             );
-          } catch (ee) {}
+          } catch (ee) { }
         }
         //if(true)
         else {
@@ -2079,8 +2079,8 @@ var GazeCloudAPI = new (function GazeCloudAPIInit() {
           );
         }
       } catch (
-        ee //drawing exeption
-      ) {}
+      ee //drawing exeption
+      ) { }
       if (_GazeData.state == -1) {
         // tracking lost puse
         if (vPoints[Ix].type == 1) {
@@ -2099,15 +2099,15 @@ var GazeCloudAPI = new (function GazeCloudAPIInit() {
             CurCalPoint = {
               x:
                 (x * window.innerWidth * window.devicePixelRatio) /
-                  CalDeviceRation +
+                CalDeviceRation +
                 window.screenX,
               y:
                 (y * window.innerHeight * window.devicePixelRatio) /
-                  CalDeviceRation +
+                CalDeviceRation +
                 window.screenY +
                 (window.outerHeight -
                   (window.innerHeight * window.devicePixelRatio) /
-                    CalDeviceRation),
+                  CalDeviceRation),
               conf: _conf,
               type: 0,
             };
@@ -2357,7 +2357,7 @@ var GazeCloudAPI = new (function GazeCloudAPIInit() {
         skipProcessCount / CurFrameNr;
       if (CamFPS > 0) if (Logg) Logg('stat : ' + stat, 5);
       ws.send(stat);
-    } catch (e) {}
+    } catch (e) { }
   }
   //////end stat/////////
   ///////fps///////
@@ -2737,7 +2737,7 @@ var GazeCloudAPI = new (function GazeCloudAPIInit() {
     setInterval(function () {
       try {
         ws.send(' ');
-      } catch (e) {}
+      } catch (e) { }
     }, 10);
   var curFps = 100;
 
@@ -2766,7 +2766,7 @@ var GazeCloudAPI = new (function GazeCloudAPIInit() {
         FPS = _fps;
         FPS = 28; // tmp test
       }
-    } catch (err) {}
+    } catch (err) { }
     //SetSendFps(FPS);
     //_LoopCamSend =  setInterval(CamSend, 1000 / FPS);
     // _LoopCamSend = setInterval(CamSend, _CamLoopInterval);
@@ -2790,7 +2790,7 @@ var GazeCloudAPI = new (function GazeCloudAPIInit() {
       CamAccessid.style.display = 'none';
       camid.style.display = 'none';
       disableStyle('GazeCloudAPI.css', true);
-    } catch (ee) {}
+    } catch (ee) { }
   }
   //--------------------------------------
   function CloseWebCam() {
@@ -2836,10 +2836,10 @@ var GazeCloudAPI = new (function GazeCloudAPIInit() {
       UpdateGUI(_GazeData);
 
       if (false) LoggSend();
-    } catch (a) {}
+    } catch (a) { }
     try {
       if (OnStopGazeFlow != null) OnStopGazeFlow();
-    } catch (e) {}
+    } catch (e) { }
   }
   //======================
   // Older browsers might not implement mediaDevices at all, so we set an empty object first
@@ -3035,7 +3035,7 @@ var GazeCloudAPI = new (function GazeCloudAPIInit() {
         video.setAttribute('playsinline', true);
         videoOrginal.setAttribute('playsinline', true);
       }
-    } catch (ee) {}
+    } catch (ee) { }
     document.getElementById('CamAccessid').style.display = 'block';
     GUIState = 'WaitWebCam';
     var ff = 0.5; //.3;//.5;// 1;//.5;//1;//2;//1;
@@ -3099,7 +3099,7 @@ var GazeCloudAPI = new (function GazeCloudAPIInit() {
               ZoomCanvasStream = ZoomCanvas.captureStream(30);
               ZoomCanvasCtx = ZoomCanvas.getContext('2d');
               video.srcObject = ZoomCanvasStream;
-            } catch (e) {}
+            } catch (e) { }
           }
         }; //////////end zoom////////
       bCamOk = true;
@@ -3138,7 +3138,7 @@ var GazeCloudAPI = new (function GazeCloudAPIInit() {
     }
   }
 
-  function StreamReady() {}
+  function StreamReady() { }
   /////////////////////EndCam///////////////////////
   ////////////////connection//////////////////////
   var ForeceCloudServerAdress = false;
@@ -3239,7 +3239,7 @@ var GazeCloudAPI = new (function GazeCloudAPIInit() {
         RedirectCount = 0;
 
         Connect();
-      } catch (e) {}
+      } catch (e) { }
     };
     //end onload
     req.onerror = function (e) {
@@ -3282,7 +3282,7 @@ var GazeCloudAPI = new (function GazeCloudAPIInit() {
           GazeCloudServerPort = info.port;
         }
         GetCloudAdressReady = true;
-      } catch (e) {}
+      } catch (e) { }
     };
     //end onload
     req.onerror = function (e) {
@@ -3414,8 +3414,8 @@ var GazeCloudAPI = new (function GazeCloudAPIInit() {
             if (GazeCloudAPI.OnCalibrationComplete != null)
               GazeCloudAPI.OnCalibrationComplete();
             if (true) disableStyle('GazeCloudAPI.css', true);
-          } catch (e) {}
-        } catch (e) {}
+          } catch (e) { }
+        } catch (e) { }
         bIsProcesingCalibration = false;
         bIsCalibrated = true;
         if (evt.data.substring(4, 6) == 'ok') {
@@ -3466,7 +3466,7 @@ var GazeCloudAPI = new (function GazeCloudAPIInit() {
         try {
           clearTimeout(isWaitForAutoryzation);
           isWaitForAutoryzation = null;
-        } catch (ee) {}
+        } catch (ee) { }
       }
 
       if (ws != null) {
@@ -3478,7 +3478,7 @@ var GazeCloudAPI = new (function GazeCloudAPIInit() {
           //if(false)
           ProcessWebRecStream(true);
           ws.send('exit');
-        } catch (ee) {}
+        } catch (ee) { }
         ws.close();
         delete ws;
         ws = null;
@@ -3489,7 +3489,7 @@ var GazeCloudAPI = new (function GazeCloudAPIInit() {
       //    isWaitForAutoryzation = null;
       // }
       // if (Logg) Logg("Disconect", 2);
-    } catch (error) {}
+    } catch (error) { }
   }
   //------------------
   function Connect(_url = '') {
@@ -3560,9 +3560,9 @@ var GazeCloudAPI = new (function GazeCloudAPIInit() {
               var _url = GazeCloudServerAdress + port;
               console.log(
                 'ws.onerror  ConnectCount try again' +
-                  ConnectCount +
-                  'url ' +
-                  _url,
+                ConnectCount +
+                'url ' +
+                _url,
               );
               Connect(_url);
             } else {
@@ -3741,7 +3741,7 @@ var GazeCloudAPI = new (function GazeCloudAPIInit() {
         if (GazeCloudAPI.OnGazeEvent != null) {
           GazeCloudAPI.OnGazeEvent(webevent);
         }
-      } catch (e) {}
+      } catch (e) { }
       /* */
     }
     ///////////////////HeatMapLive//////////////
@@ -3768,7 +3768,7 @@ var GazeCloudAPI = new (function GazeCloudAPIInit() {
                 y: _y,
                 value: v,
               });
-            } catch (e) {}
+            } catch (e) { }
           }
         }
     ///////////////////end HeatMapLive//////////////
@@ -3810,7 +3810,7 @@ var GazeCloudAPI = new (function GazeCloudAPIInit() {
           break;
         }
       }
-    } catch (e) {}
+    } catch (e) { }
   };
   if (true) {
     //load style
@@ -3821,7 +3821,7 @@ var GazeCloudAPI = new (function GazeCloudAPIInit() {
       //     .getElementsByTagName('head')[0]
       //     .insertAdjacentHTML('afterbegin', style);
       //disableStyle('GazeCloudAPI.css',true);
-    } catch (e) {}
+    } catch (e) { }
   }
 
   function InitGUI() {
@@ -3844,7 +3844,7 @@ var GazeCloudAPI = new (function GazeCloudAPIInit() {
     }
     try {
       disableStyle('GazeCloudAPI.css', false);
-    } catch (e) {}
+    } catch (e) { }
     GUIInitialized = true;
     ////////init gui/////
     DocmentLoaded = true;
@@ -4182,7 +4182,7 @@ var GazeCloudAPI = new (function GazeCloudAPIInit() {
         /* IE/Edge */
         document.msExitFullscreen();
       }
-    } catch (error) {}
+    } catch (error) { }
   }
   ////////////////////////////////////////
   /////////////////////API/////////////////////////
@@ -4198,7 +4198,7 @@ var GazeCloudAPI = new (function GazeCloudAPIInit() {
       }
 
       ResetGetCloudAdressReconnect();
-    } catch (e) {}
+    } catch (e) { }
   }
   //--------------------
   var bStarted = false;
@@ -4230,7 +4230,7 @@ var GazeCloudAPI = new (function GazeCloudAPIInit() {
                 return;
               }
         }
-    } catch (eee) {}
+    } catch (eee) { }
     OpenWebCam();
     //if(false ) /// connect after camera allow acess
     //  Connect();
@@ -4247,7 +4247,7 @@ var GazeCloudAPI = new (function GazeCloudAPIInit() {
       HideGUI();
       if (Logg) Logg('StopGazeFlow', 2);
       bStarted = false;
-    } catch (error) {}
+    } catch (error) { }
   }
   //----------------------------------
   window.addEventListener(
@@ -4319,7 +4319,7 @@ var GazeCloudAPI = new (function GazeCloudAPIInit() {
       formData.append('sesionid', LogSesionID);
       req.open('POST', 'https://logs.gazerecorder.com/Logs.php');
       req.send(formData);
-    } catch (e) {}
+    } catch (e) { }
   }
 
   window.addEventListener('beforeunload', function (event) {
@@ -4371,7 +4371,7 @@ function InitOldAPI() {
     if (typeof OnCamDenied !== 'undefined')
       GazeCloudAPI.OnCamDenied = OnCamDenied;
     if (typeof OnError !== 'undefined') GazeCloudAPI.OnError = OnError;
-  } catch (e) {}
+  } catch (e) { }
 }
 var processClick = GazeCloudAPI.processClick;
 /////////end Version 1.0.0///////////
@@ -4402,13 +4402,18 @@ function PlotGaze(GazeData) {
     if (gaze.style.display == 'none') GazePointer.style.display = 'block';
   }
 
+  const scrollSpeed = localStorage.getItem(
+    'scrollSpeed',
+  ) || 10;
+
   // If looking at top of the page, scroll up
   if (GazeData.GazeY < 100) {
-    window.scrollBy(0, -10);
+
+    window.scrollBy(0, -scrollSpeed);
   }
   // If looking at bottom of the page, scroll down
   if (GazeData.GazeY > screenHeight2 - 100) {
-    window.scrollBy(0, 10);
+    window.scrollBy(0, scrollSpeed);
   }
 
   // Hihglight the element being looked at

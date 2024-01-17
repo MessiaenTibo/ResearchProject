@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const leftEyeBlinkAction = document.getElementById('leftEyeBlink');
   const rightEyeBlinkAction = document.getElementById('rightEyeBlink');
   const doubleEyeBlinkAction = document.getElementById('doubleEyeBlink');
+  const scrollSpeed = document.getElementById('scrollSpeed');
 
   // *** Start Eye Tracking ***
   chrome.runtime.sendMessage({ action: 'startEyeTracking' });
@@ -35,17 +36,17 @@ document.addEventListener('DOMContentLoaded', function () {
     if (selectedRightEyeBlinkAction === selectedAction) {
       rightEyeBlinkAction.value = 'none';
       // Change storage
-      storeDataToChromeStorage('rightEyeClickAction', 'none');
+      storeDataToChromeStorage('rightEyeBlinkAction', 'none');
     }
     const selectedDoubleEyeBlinkAction = doubleEyeBlinkAction.value;
     if (selectedDoubleEyeBlinkAction === selectedAction) {
       doubleEyeBlinkAction.value = 'none';
       // Change storage
-      storeDataToChromeStorage('doubleEyeClickAction', 'none');
+      storeDataToChromeStorage('doubleEyeBlinkAction', 'none');
     }
 
     // Save it using the Chrome extension storage API.
-    storeDataToChromeStorage('leftEyeClickAction', selectedAction);
+    storeDataToChromeStorage('leftEyeBlinkAction', selectedAction);
 
 
   });
@@ -62,18 +63,18 @@ document.addEventListener('DOMContentLoaded', function () {
     if (selectedLeftEyeBlinkAction === selectedAction) {
       leftEyeBlinkAction.value = 'none';
       // Change storage
-      storeDataToChromeStorage('leftEyeClickAction', 'none');
+      storeDataToChromeStorage('leftEyeBlinkAction', 'none');
     }
 
     const selectedDoubleEyeBlinkAction = doubleEyeBlinkAction.value;
     if (selectedDoubleEyeBlinkAction === selectedAction) {
       doubleEyeBlinkAction.value = 'none';
       // Change storage
-      storeDataToChromeStorage('doubleEyeClickAction', 'none');
+      storeDataToChromeStorage('doubleEyeBlinkAction', 'none');
     }
 
     // Save it using the Chrome extension storage API.
-    storeDataToChromeStorage('rightEyeClickAction', selectedAction);
+    storeDataToChromeStorage('rightEyeBlinkAction', selectedAction);
 
   });
 
@@ -89,19 +90,27 @@ document.addEventListener('DOMContentLoaded', function () {
     if (selectedLeftEyeBlinkAction === selectedAction) {
       leftEyeBlinkAction.value = 'none';
       // Change storage
-      storeDataToChromeStorage('leftEyeClickAction', 'none');
+      storeDataToChromeStorage('leftEyeBlinkAction', 'none');
     }
 
     const selectedRightEyeBlinkAction = rightEyeBlinkAction.value;
     if (selectedRightEyeBlinkAction === selectedAction) {
       rightEyeBlinkAction.value = 'none';
       // Change storage
-      storeDataToChromeStorage('rightEyeClickAction', 'none');
+      storeDataToChromeStorage('rightEyeBlinkAction', 'none');
     }
 
     // Save it using the Chrome extension storage API.
-    storeDataToChromeStorage('doubleEyeClickAction', selectedAction);
+    storeDataToChromeStorage('doubleEyeBlinkAction', selectedAction);
 
+  });
+
+  scrollSpeed.addEventListener('change', function () {
+    // Log action change
+    console.log('scrollSpeed changed');
+
+    // Save it using the Chrome extension storage API.
+    storeDataToChromeStorage('scrollSpeed', scrollSpeed.value);
   });
 
   // *** Functions ***
@@ -113,22 +122,28 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function getSettingsFromChromeStorage() {
 
-    // Get leftEyeClickAction from storage
-    chrome.runtime.sendMessage({ action: 'getDataFromChromeStorage', key: 'leftEyeClickAction' }, function (response) {
+    // Get leftEyeBlinkAction from storage
+    chrome.runtime.sendMessage({ action: 'getDataFromChromeStorage', key: 'leftEyeBlinkAction' }, function (response) {
       console.log(response);
       leftEyeBlinkAction.value = response.message;
     });
 
-    // Get rightEyeClickAction from storage
-    chrome.runtime.sendMessage({ action: 'getDataFromChromeStorage', key: 'rightEyeClickAction' }, function (response) {
+    // Get rightEyeBlinkAction from storage
+    chrome.runtime.sendMessage({ action: 'getDataFromChromeStorage', key: 'rightEyeBlinkAction' }, function (response) {
       console.log(response.message);
       rightEyeBlinkAction.value = response.message;
     });
 
-    // Get doubleEyeClickAction from storage
-    chrome.runtime.sendMessage({ action: 'getDataFromChromeStorage', key: 'doubleEyeClickAction' }, function (response) {
+    // Get doubleEyeBlinkAction from storage
+    chrome.runtime.sendMessage({ action: 'getDataFromChromeStorage', key: 'doubleEyeBlinkAction' }, function (response) {
       console.log(response.message);
       doubleEyeBlinkAction.value = response.message;
+    });
+
+    // Get scrollSpeed from storage
+    chrome.runtime.sendMessage({ action: 'getDataFromChromeStorage', key: 'scrollSpeed' }, function (response) {
+      console.log(response.message);
+      scrollSpeed.value = response.message;
     });
   }
 });

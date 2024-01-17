@@ -17,6 +17,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
         chrome.scripting.executeScript({
           target: { tabId: tabId },
           function: (action) => {
+
             // Add Custom CSS - Function
             const Add_Custom_CSS = (css) =>
             (document.head.appendChild(
@@ -39,6 +40,11 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
               console.log('simulatePageDown');
               window.scrollBy(0, 10);
             } else if (action === 'startEyeTracking') {
+              // if script is already loaded, do nothing
+              if (document.getElementById('GazeCloudApiScript')) {
+                console.log('GazeCloudApi.js already loaded');
+                return;
+              }
               // Create script element
               const localScriptURL = chrome.runtime.getURL('GazeCloudApi.js');
               const scriptElement = document.createElement('script');
@@ -67,6 +73,12 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
               // Append the script element to the head
               document.head.appendChild(scriptElement);
             } else if (action === 'startBlinkDetection') {
+              // if script is already loaded, do nothing
+              if (document.getElementById('MediapipeFaceLandmarkerScript')) {
+                console.log('MediapipeFaceLandmarker.js already loaded');
+                return;
+              }
+
               // Create script element
               const localScriptURL = chrome.runtime.getURL(
                 'MediapipeFaceLandmarker.js',
@@ -107,24 +119,45 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   // *** Storage ***
   // Set data in storage
   if (request.action === 'storeDataToChromeStorage') {
+    // Log action
     console.log('storeDataToChromeStorage');
+
+    // Save it using the Chrome extension storage API.
     chrome.storage.sync.set({ [request.key]: request.value }, function () {
       console.log('Value is set to ' + request.value);
     });
 
-    chrome.storage.sync.get([request.key], function (result) {
-      console.log('Value currently is ' + result.key);
-      console.log(result);
+    // Set data in localstorage from current active tab
+    chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+      if (tabs.length > 0) {
+        const tabId = tabs[0].id;
+
+        // Send a message to the content script to set data in localstorage
+        chrome.scripting.executeScript({
+          target: { tabId: tabId },
+          function: (key, value) => {
+            // Set data in localstorage
+            localStorage.setItem(key, value);
+          },
+          args: [request.key, request.value],
+        });
+      }
     });
 
+    // Send response back to sender
     sendResponse({ message: 'Value is set to ' + request.value });
   }
   // Get data from storage
   if (request.action === 'getDataFromChromeStorage') {
+    // Log action
     console.log('getDataFromChromeStorage');
+
+    // Get data from storage
     chrome.storage.sync.get([request.key], function (result) {
       console.log('Value currently is ' + result[request.key]);
       console.log(result[request.key]);
+
+      // Send response
       sendResponse({ message: result[request.key] });
     });
     return true;

@@ -120,6 +120,17 @@ function drawBlendShapes(el, blendShapes) {
   ) {
     console.log('Special Event 1: if the user blinks with the left eye only');
     GazePointer.style.backgroundColor = 'red';
+    // Get leftEyeBlinkAction from local storage
+    const lefytEyeBlinkAction = localStorage.getItem('leftEyeBlinkAction');
+    if (lefytEyeBlinkAction == "none") {
+      console.log("No action set for left eye blink");
+    } else if (lefytEyeBlinkAction == "click") {
+      EmulateClick();
+    } else if (lefytEyeBlinkAction == "doubleClick") {
+      EmulateDoubleClick();
+    } else {
+      console.log("Invalid action set for left eye blink");
+    }
   }
   // Special Event 2: if the user blinks with the right eye only
   if (
@@ -130,7 +141,17 @@ function drawBlendShapes(el, blendShapes) {
   ) {
     console.log('Special Event 2: if the user blinks with the right eye only');
     GazePointer.style.backgroundColor = 'blue';
-    EmulateClick();
+    // Get rightEyeBlinkAction from local storage
+    const rightEyeBlinkAction = localStorage.getItem('rightEyeBlinkAction');
+    if (rightEyeBlinkAction == "none") {
+      console.log("No action set for right eye blink");
+    } else if (rightEyeBlinkAction == "click") {
+      EmulateClick();
+    } else if (rightEyeBlinkAction == "doubleClick") {
+      EmulateDoubleClick();
+    } else {
+      console.log("Invalid action set for right eye blink");
+    }
   }
   // Special Event 3: if the user blinks with both eyes twice in a row (within 1 second)
   if (
@@ -147,7 +168,19 @@ function drawBlendShapes(el, blendShapes) {
           'Special Event 3: if the user blinks with both eyes twice in a row (within 1 second)',
         );
         GazePointer.style.backgroundColor = 'orange';
-        EmulateDoubleClick();
+        // Get doubleEyeBlinkAction from local storage
+        const doubleEyeBlinkAction = localStorage.getItem(
+          'doubleEyeBlinkAction',
+        );
+        if (doubleEyeBlinkAction == "none") {
+          console.log("No action set for double eye blink");
+        } else if (doubleEyeBlinkAction == "click") {
+          EmulateClick();
+        } else if (doubleEyeBlinkAction == "doubleClick") {
+          EmulateDoubleClick();
+        } else {
+          console.log("Invalid action set for double eye blink");
+        }
         lastDoubleBlinkTime = -1;
       } else {
         lastDoubleBlinkTime = performance.now();
