@@ -19,9 +19,9 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
           function: (action) => {
             // Add Custom CSS - Function
             const Add_Custom_CSS = (css) =>
-              (document.head.appendChild(
-                document.createElement('style'),
-              ).innerHTML = css);
+            (document.head.appendChild(
+              document.createElement('style'),
+            ).innerHTML = css);
 
             // Create Custom Element - Function
             function Create_Custom_Element(tag, attr_tag, attr_name, value) {
@@ -101,5 +101,32 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
         });
       }
     });
+  }
+
+
+  // *** Storage ***
+  // Set data in storage
+  if (request.action === 'storeDataToChromeStorage') {
+    console.log('storeDataToChromeStorage');
+    chrome.storage.sync.set({ [request.key]: request.value }, function () {
+      console.log('Value is set to ' + request.value);
+    });
+
+    chrome.storage.sync.get([request.key], function (result) {
+      console.log('Value currently is ' + result.key);
+      console.log(result);
+    });
+
+    sendResponse({ message: 'Value is set to ' + request.value });
+  }
+  // Get data from storage
+  if (request.action === 'getDataFromChromeStorage') {
+    console.log('getDataFromChromeStorage');
+    chrome.storage.sync.get([request.key], function (result) {
+      console.log('Value currently is ' + result[request.key]);
+      console.log(result[request.key]);
+      sendResponse({ message: result[request.key] });
+    });
+    return true;
   }
 });
