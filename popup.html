@@ -23,34 +23,36 @@
     </div>
 
     <h3>Blink options</h3>
-    <div class="option">
-      <label for="leftEyeBlink">Left eye blink</label>
-      <select name="leftEyeBlinkAction" id="leftEyeBlink">
-        <option value="none">None</option>
-        <option value="back">Back</option>
-        <option value="click">Click</option>
-        <option value="doubleClick">Double Click</option>
-      </select>
-    </div>
+    <div class="options-list">
+      <div class="option">
+        <label for="leftEyeBlink">Left eye blink</label>
+        <select name="leftEyeBlinkAction" id="leftEyeBlink">
+          <option value="none">None</option>
+          <option value="back">Back</option>
+          <option value="click">Click</option>
+          <option value="doubleClick">Double Click</option>
+        </select>
+      </div>
 
-    <div class="option">
-      <label for="rightEyeBlink">Right eye blink</label>
-      <select name="rightEyeBlinkAction" id="rightEyeBlink">
-        <option value="none">None</option>
-        <option value="back">Back</option>
-        <option value="click">Click</option>
-        <option value="doubleClick">Double Click</option>
-      </select>
-    </div>
+      <div class="option">
+        <label for="rightEyeBlink">Right eye blink</label>
+        <select name="rightEyeBlinkAction" id="rightEyeBlink">
+          <option value="none">None</option>
+          <option value="back">Back</option>
+          <option value="click">Click</option>
+          <option value="doubleClick">Double Click</option>
+        </select>
+      </div>
 
-    <div class="option">
-      <label for="doubleEyeBlink">Double eye blink</label>
-      <select name="doubleEyeBlinkAction" id="doubleEyeBlink">
-        <option value="none">None</option>
-        <option value="back">Back</option>
-        <option value="click">Click</option>
-        <option value="doubleClick">Double Click</option>
-      </select>
+      <div class="option">
+        <label for="doubleEyeBlink">Double eye blink</label>
+        <select name="doubleEyeBlinkAction" id="doubleEyeBlink">
+          <option value="none">None</option>
+          <option value="back">Back</option>
+          <option value="click">Click</option>
+          <option value="doubleClick">Double Click</option>
+        </select>
+      </div>
     </div>
 
 
@@ -63,7 +65,7 @@
   }
 
   h1 {
-    font-size: 20px;
+    font-size: 22px;
     font-weight: bold;
     margin: auto;
     text-align: center;
@@ -90,6 +92,12 @@
     font-size: 16px;
     display: flex;
     justify-content: space-between;
+  }
+
+  .options-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
   }
 </style>
 
