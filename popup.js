@@ -125,25 +125,26 @@ document.addEventListener('DOMContentLoaded', function () {
     // Get leftEyeBlinkAction from storage
     chrome.runtime.sendMessage({ action: 'getDataFromChromeStorage', key: 'leftEyeBlinkAction' }, function (response) {
       console.log(response);
-      leftEyeBlinkAction.value = response.message;
+      if (response.message) leftEyeBlinkAction.value = response.message;
+
     });
 
     // Get rightEyeBlinkAction from storage
     chrome.runtime.sendMessage({ action: 'getDataFromChromeStorage', key: 'rightEyeBlinkAction' }, function (response) {
       console.log(response.message);
-      rightEyeBlinkAction.value = response.message;
+      if (response.message) rightEyeBlinkAction.value = response.message;
     });
 
     // Get doubleEyeBlinkAction from storage
     chrome.runtime.sendMessage({ action: 'getDataFromChromeStorage', key: 'doubleEyeBlinkAction' }, function (response) {
       console.log(response.message);
-      doubleEyeBlinkAction.value = response.message;
+      if (response.message) doubleEyeBlinkAction.value = response.message;
     });
 
     // Get scrollSpeed from storage
     chrome.runtime.sendMessage({ action: 'getDataFromChromeStorage', key: 'scrollSpeed' }, function (response) {
       console.log(response.message);
-      scrollSpeed.value = response.message;
+      if (response.message) scrollSpeed.value = response.message;
     });
   }
 });
