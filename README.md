@@ -1,16 +1,38 @@
 # ResearchProject
 
 ## Introduction
-This project is a research project for the course Research Project at the Howest-Kortrijk. The goal of this project is to research the possibilities of using eye-tracking to interact with an website. The project is divided into two parts: a chrome extension and a backend. The chrome extension is used to track the eye-movements of the user and the backen is used to detect eye-blinks.
+
+This project is conducted as part of the Research Project course at Howest-Kortrijk. The primary objective is to explore the potential applications of eye-tracking technology for website interaction.
+
+To achieve this goal, a Chrome extension has been developed, enabling compatibility with any website. The GazeCloudAPI is employed to monitor the user's eye movements, while a MediaPipe face landmark model is utilized to detect blinking movements.
+
+By combining these technologies, the project aims to enhance the user experience by introducing novel methods of interacting with websites through eye-tracking functionality.
 
 ## Installation
+Download this repository and save it somewhere on your pc.
 
+Go to “chrome://extensions/” in a chrome browser
+
+![chrome extensions](img/image.png)
+
+Click in the “Load unpacked” button <br>
+And open the just downloaded code map
+ 
+ ![file manager](img/image-1.png)
 
 ## Usage
+Open a Chrome browser and click on the extension button
+Click on the desired extension
+
+![Chrome extensions tab](img/image-2.png)
+
+The extension opens and is ready to be used.<br>
+You can also customize the scrolling speed and blink options
+
+![Alt text](img/image-3.png)
 
 
-
-## links
+## Inspiration links
 1) API for eye tracking: <br>
 https://gazerecorder.com/
 
